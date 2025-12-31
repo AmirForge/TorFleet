@@ -189,21 +189,6 @@ tmux kill-session -t tor
 
 ---
 
-## 📁 Configuration Storage
-
-All configurations are stored locally in:
-
-```text
-~/.tor_manager/
-```
-
-This includes:
-- Tor instances
-- Bridge configuration
-- Scheduling options
-
----
-
 ## 🔗 Links
 
 GitHub:
