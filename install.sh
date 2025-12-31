@@ -70,12 +70,26 @@ fi
 # --- Permissions ---
 chmod +x TorFleet.py
 
-# --- Prepare Tor directories ---
-echo "[5/5] Preparing environment and starting TorFleet..."
-mkdir -p /root/tor
-chmod 755 /root/tor
+# --- Create launcher script ---
+echo "[5/5] Creating launcher..."
+cat > /usr/local/bin/torfleet << 'EOF'
+#!/bin/bash
+cd /root/TorFleet
+exec python3 TorFleet.py
+EOF
+
+chmod +x /usr/local/bin/torfleet
+
+# --- Installation complete ---
+echo ""
+echo "=========================================="
+echo "✓ TorFleet installed successfully!"
 echo "=========================================="
 echo ""
-
-cd "$INSTALL_DIR"
-python3 TorFleet.py
+echo "To start TorFleet, run:"
+echo ""
+echo "    torfleet"
+echo ""
+echo "GitHub: https://github.com/AmirForge/TorFleet"
+echo "Telegram: https://t.me/dusty_mesa"
+echo "=========================================="
