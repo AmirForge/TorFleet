@@ -1,7 +1,8 @@
 # 🧅 TorFleet
-**TorFleet** is a powerful Python-based CLI tool for managing multiple Tor instances,  
-optimizing exit nodes by country, and automatically selecting the fastest available Tor routes.
 
+**TorFleet** is a powerful Python-based CLI tool for managing multiple Tor instances,  
+optimizing exit nodes by country, and automatically selecting the fastest available Tor routes.  
+-
 It provides a complete Tor management solution with speed testing, bridge support,
 persistent configuration, and scheduled re-testing — all from a single interface.
 ---
