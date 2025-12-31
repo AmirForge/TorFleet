@@ -19,22 +19,16 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-# --- Fix line endings if needed ---
-echo "[0/6] Fixing line endings..."
-apt update -y
-apt install -y dos2unix
-dos2unix "$0" 2>/dev/null || sed -i 's/\r$//' "$0"
-
 # --- Variables ---
 REPO_URL="https://github.com/AmirForge/TorFleet.git"
 INSTALL_DIR="/root/TorFleet"
 
 # --- Update system ---
-echo "[1/6] Updating system packages..."
+echo "[1/5] Updating system packages..."
 apt update -y
 
 # --- Install system dependencies ---
-echo "[2/6] Installing system dependencies..."
+echo "[2/5] Installing system dependencies..."
 apt install -y \
     tor \
     python3 \
@@ -52,7 +46,7 @@ fi
 echo "[✓] Tor installed successfully"
 
 # --- Clone or update TorFleet ---
-echo "[3/6] Installing TorFleet..."
+echo "[3/5] Installing TorFleet..."
 
 if [ -d "$INSTALL_DIR" ]; then
     echo "    Existing installation found, updating repository..."
@@ -64,20 +58,22 @@ else
 fi
 
 # --- Install Python requirements ---
-echo "[4/6] Installing Python requirements..."
-pip3 install --break-system-packages -r requirements.txt || \
-apt install -y python3-requests python3-schedule python3-socks
+echo "[4/5] Installing Python requirements..."
+if [ -f "requirements.txt" ]; then
+    pip3 install --break-system-packages -r requirements.txt 2>/dev/null || \
+    pip3 install -r requirements.txt 2>/dev/null || \
+    apt install -y python3-requests python3-schedule python3-socks
+else
+    apt install -y python3-requests python3-schedule python3-socks
+fi
 
 # --- Permissions ---
 chmod +x TorFleet.py
 
 # --- Prepare Tor directories ---
-echo "[5/6] Preparing Tor directories..."
+echo "[5/5] Preparing environment and starting TorFleet..."
 mkdir -p /root/tor
 chmod 755 /root/tor
-
-# --- Run TorFleet ---
-echo "[6/6] Starting TorFleet..."
 echo "=========================================="
 echo ""
 
