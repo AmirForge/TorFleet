@@ -1,6 +1,7 @@
 # 🧅 TorFleet
 **TorFleet** is a powerful Python-based CLI tool for managing multiple Tor instances,  
 optimizing exit nodes by country, and automatically selecting the fastest available Tor routes.
+
 It provides a complete Tor management solution with speed testing, bridge support,
 persistent configuration, and scheduled re-testing — all from a single interface.
 ---
@@ -16,13 +17,17 @@ persistent configuration, and scheduled re-testing — all from a single interfa
 - 💾 Persistent configuration storage
 - 🖥 Interactive CLI + command-line flags
 - 🔌 SOCKS5 proxy output ready to use
+  
 ---
+
 ## 📦 System Requirements
 - Linux (Ubuntu / Debian recommended)
 - Python 3.8+
 - Root access (required to manage Tor)
 - Internet access
+  
 ---
+
 ## 🚀 Quick Start & Installation
 ### 1️⃣ One-Line Install (Recommended)
 This single command will:
@@ -38,7 +43,9 @@ After installation completes, start TorFleet:
 ```bash
 torfleet
 ```
+
 ---
+
 ### 2️⃣ Manual Installation
 If you prefer to review the installation script first:
 ```bash
@@ -50,7 +57,9 @@ Then start TorFleet:
 ```bash
 torfleet
 ```
+
 ---
+
 ### 3️⃣ Interactive Menu Overview
 When TorFleet starts, you will see:
 ```text
@@ -66,7 +75,9 @@ When TorFleet starts, you will see:
 10. Save and exit
 0. Exit without saving
 ```
+
 ---
+
 ### 4️⃣ Add a New Tor Instance
 ```text
 Menu → 1
@@ -76,7 +87,9 @@ You will be asked for:
 - Country code (US, DE, FR, ...)
 - SOCKS port (9050, 9051, ...)
 Each instance runs independently in its own directory.
+
 ---
+
 ### 5️⃣ Find the Fastest Tor Routes
 ```text
 Menu → 5
@@ -86,7 +99,9 @@ TorFleet will automatically:
 - Verify exit country
 - Test speed & latency
 - Select the fastest available IP
+
 ---
+
 ### 6️⃣ Configure Tor Bridges (Optional)
 ```text
 Menu → 4
@@ -96,7 +111,9 @@ Supported bridges:
 - snowflake
 Get bridges from:
 https://bridges.torproject.org/
+
 ---
+
 ### 7️⃣ Run Without Menu (Auto Mode)
 Start TorFleet using saved configuration:
 ```bash
@@ -107,13 +124,17 @@ Or with the Python script directly:
 cd /root/TorFleet
 sudo python3 TorFleet.py -y
 ```
+
 ---
+
 ### 8️⃣ Test or List Instances (CLI)
 ```bash
 sudo python3 TorFleet.py --test
 sudo python3 TorFleet.py --list
 ```
+
 ---
+
 ### 9️⃣ SOCKS5 Proxy Usage
 Each Tor instance provides a local SOCKS5 proxy:
 ```text
@@ -124,7 +145,9 @@ Example:
 socks5://127.0.0.1:9050
 ```
 You can use this proxy with browsers, curl, or any SOCKS5-compatible application.
+
 ---
+
 ### 🖥 Run TorFleet in Background (tmux)
 If you want to keep TorFleet running in the background (recommended for VPS),
 you can use **tmux**.
@@ -140,6 +163,7 @@ To stop the session:
 ```bash
 tmux kill-session -t torfleet
 ```
+
 > This allows TorFleet to keep running even after you disconnect from the server.
 ---
 ## 🔗 Links
