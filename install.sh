@@ -24,15 +24,18 @@ REPO_URL="https://github.com/AmirForge/TorFleet.git"
 INSTALL_DIR="/root/TorFleet"
 
 # --- Update system ---
-echo "[1/5] Updating system packages..."
+echo "[1/6] Updating system packages..."
 apt update -y
 
 # --- Install system dependencies ---
-echo "[2/5] Installing system dependencies..."
+echo "[2/6] Installing system dependencies..."
 apt install -y \
     tor \
     python3 \
     python3-pip \
+    python3-requests \
+    python3-schedule \
+    python3-socks \
     git \
     curl \
     wget \
@@ -46,7 +49,7 @@ fi
 echo "[✓] Tor installed successfully"
 
 # --- Clone or update TorFleet ---
-echo "[3/5] Installing TorFleet..."
+echo "[3/6] Installing TorFleet..."
 
 if [ -d "$INSTALL_DIR" ]; then
     echo "    Existing installation found, updating repository..."
@@ -58,20 +61,22 @@ else
 fi
 
 # --- Install Python requirements ---
-echo "[4/5] Installing Python requirements..."
+echo "[4/6] Installing Python requirements..."
 if [ -f "requirements.txt" ]; then
-    pip3 install --break-system-packages -r requirements.txt 2>/dev/null || \
-    pip3 install -r requirements.txt 2>/dev/null || \
-    apt install -y python3-requests python3-schedule python3-socks
-else
-    apt install -y python3-requests python3-schedule python3-socks
+    pip3 install --break-system-packages -r requirements.txt || \
+    pip3 install -r requirements.txt || true
 fi
 
 # --- Permissions ---
 chmod +x TorFleet.py
 
+# --- Prepare Tor directories ---
+echo "[5/6] Preparing Tor directories..."
+mkdir -p /root/tor
+chmod 755 /root/tor
+
 # --- Create launcher script ---
-echo "[5/5] Creating launcher..."
+echo "[6/6] Creating launcher..."
 cat > /usr/local/bin/torfleet << 'EOF'
 #!/bin/bash
 cd /root/TorFleet
