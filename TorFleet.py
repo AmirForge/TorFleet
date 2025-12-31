@@ -696,9 +696,7 @@ UseEntryGuards 1
         """Main interactive menu"""
         while True:
             print("\n" + "="*60)
-            print("TOR MANAGER - MAIN MENU")
-            print("GitHub: https://github.com/AmirForge/TorFleet")
-            print("Telegram: https://t.me/dusty_mesa")
+            print("TorFleet - MAIN MENU")
             print("="*60)
             print(f"Configured instances: {len(self.instances)}")
             if self.bridge_data:
@@ -782,9 +780,12 @@ def main():
         # Interactive mode
         os.system('clear')
         print("="*60)
-        print("TOR MANAGER - Multi-Instance Controller")
+        print("TorFleet - Multi-Instance Controller")
+        print("GitHub: https://github.com/AmirForge/TorFleet")
+        print("Telegram: https://t.me/dusty_mesa")
         print("="*60)
         manager.interactive_menu()
 
 if __name__ == "__main__":
     main()
+
