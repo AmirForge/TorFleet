@@ -19,6 +19,12 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
+# --- Fix line endings if needed ---
+echo "[0/6] Fixing line endings..."
+apt update -y
+apt install -y dos2unix
+dos2unix "$0" 2>/dev/null || sed -i 's/\r$//' "$0"
+
 # --- Variables ---
 REPO_URL="https://github.com/AmirForge/TorFleet.git"
 INSTALL_DIR="/root/TorFleet"
