@@ -141,7 +141,7 @@ socks5://127.0.0.1:<PORT>
 Example:
 socks5://127.0.0.1:9050
 
-TorFleet can also be used as an outbound SOCKS proxy for VPN setups.
+TorFleet can also **be used as an outbound SOCKS proxy for VPN setups**.
 VPN traffic can be routed through TorFleet’s SOCKS5 proxies,
 allowing multi-country outbound routing without purchasing additional servers.
 
