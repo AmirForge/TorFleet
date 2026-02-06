@@ -12,6 +12,7 @@ import schedule
 from datetime import datetime
 from pathlib import Path
 
+
 # Configuration file paths
 CONFIG_DIR = Path.home() / ".tor_manager"
 CONFIG_FILE = CONFIG_DIR / "config.pkl"
@@ -788,4 +789,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
